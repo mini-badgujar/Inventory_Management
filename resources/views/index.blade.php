@@ -14,12 +14,13 @@
             </span>
         </div>
     @endif
-    <x-card>
-
-        <div class="mb-10 mt-0 text-3xl font-medium leading-tight text-primary">
+    <center>
+        <div class="mb-10 mt-0 text-5xl font-medium leading-tight text-primary text-slate-100">
             Inventory Management
         </div>
-        <div class="flex space-x-4 items-center justify-between mb-5">
+    </center>
+    <x-card>
+        {{-- <div class="flex space-x-4 items-center justify-between mb-5">
             <div class="w-11/12">
                 @livewire('search-bar')
             </div>
@@ -29,7 +30,7 @@
                     Add
                 </a>
             </div>
-        </div>
+        </div> --}}
         <div>
             @livewire('product-list')
         </div>

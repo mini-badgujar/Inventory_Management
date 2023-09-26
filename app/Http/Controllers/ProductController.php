@@ -11,7 +11,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(products $products)
+    public function index()
     {
         return view('index');
     }

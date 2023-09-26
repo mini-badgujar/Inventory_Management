@@ -1,6 +1,10 @@
 <x-layout>
+    <center>
+        <div class="mb-10 mt-0 text-4xl font-medium leading-tight text-primary text-slate-100">
+            Update Product
+        </div>
+    </center>
     <x-card class="w-1/2">
-
         <form method="POST" action="{{ route('products.update', $product->id) }}">
             @csrf
             @method('PUT')

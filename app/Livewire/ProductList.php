@@ -9,6 +9,8 @@ use Livewire\Component;
 class ProductList extends Component
 {
     use WithPagination;
+
+    public $searchTerm;
     public function delete($id, products $product)
     {
         $product->find($id)->delete();
@@ -18,7 +20,11 @@ class ProductList extends Component
 
     public function render()
     {
-        $products = products::latest()->simplePaginate(10);
+        if ($this->searchTerm) {
+            $products = products::where('name', 'like', '%' . $this->searchTerm . '%')->get();
+        } else {
+            $products = products::latest()->simplePaginate(10);
+        }
         return view('livewire.product-list', [
             'products' => $products,
         ]);
