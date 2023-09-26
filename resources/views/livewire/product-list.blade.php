@@ -18,6 +18,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($products as $product)
                     <tr class="bg-white border-b hover:bg-gray-50">
 
@@ -31,9 +32,11 @@
                             {{ $product->quantity }}
                         </td>
                         <td class="flex items-center px-6 py-4 space-x-5">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            <a href="{{ route('products.destroy', $product) }}" wire:navigate
-                                class="font-medium text-red-600  hover:underline">Remove</a>
+                            <a href="{{ route('products.edit', $product->id) }}"
+                                class="font-medium text-blue-600 hover:underline">Edit</a>
+
+                            <button wire:click="delete({{ $product->id }})"
+                                class="font-medium text-red-600  hover:underline">Remove</button>
                         </td>
                     </tr>
                 @endforeach

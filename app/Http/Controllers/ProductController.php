@@ -29,16 +29,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $validated = $request->validate([
-            'name' => 'require|max:255',
-            'description' => 'required',
-            'price' => 'required|min:150|max:6000',
-            'quantity' => 'required|min:1|max:100'
+        $request->validate([
+            'name' => 'bail|required|max:255',
+            'description' => 'bail|required',
+            'price' => 'bail|required|numeric|between:150,6000',
+            'quantity' => 'bail|required|numeric|between:1,100',
         ]);
-
         products::create($request->all());
-        dd('stored');
+
         return redirect()->route('products.index')->with('success', "Product added Successfuly");
     }
 
@@ -53,17 +51,29 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $product = products::findorfail($id);
+        return view('update', [
+            'product' => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $product)
     {
-        //
+
+        $data = $request->validate([
+            'name' => 'bail|required|max:255',
+            'description' => 'bail|required',
+            'price' => 'bail|required|numeric|between:150,6000',
+            'quantity' => 'bail|required|numeric|between:1,100',
+        ]);
+        products::find($product)->update($data);
+
+        return redirect()->route('products.index')->with('success', "Product updated Successfuly");
     }
 
     /**
@@ -71,7 +81,6 @@ class ProductController extends Controller
      */
     public function destroy($product, products $products)
     {
-        dd("data deleted");
-        return redirect()->route('products.index')->with('success', "Product deleted successfully");
+        //
     }
 }
