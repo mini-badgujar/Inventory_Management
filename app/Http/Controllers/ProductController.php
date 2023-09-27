@@ -30,10 +30,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'bail|required|max:255',
-            'description' => 'bail|required',
-            'price' => 'bail|required|numeric|between:150,6000',
-            'quantity' => 'bail|required|numeric|between:1,100',
+            'name' => 'required|max:255',
+            'description' => '',
+            'price' => 'required|numeric|between:150,6000',
+            'quantity' => 'required|numeric|between:1,100',
         ]);
         products::create($request->all());
 
@@ -66,10 +66,10 @@ class ProductController extends Controller
     {
 
         $data = $request->validate([
-            'name' => 'bail|required|max:255',
-            'description' => 'bail|required',
-            'price' => 'bail|required|numeric|between:150,6000',
-            'quantity' => 'bail|required|numeric|between:1,100',
+            'name' => 'required|max:255',
+            'description' => '',
+            'price' => 'required|numeric|between:150,6000',
+            'quantity' => 'required|numeric|between:1,100',
         ]);
         products::find($product)->update($data);
 

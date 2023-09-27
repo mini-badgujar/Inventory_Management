@@ -10,17 +10,18 @@
             @csrf
             <div class="mb-6">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Product Name*</label>
-                <input type="text" id="name" name="name"
+                <input type="text" id="name" name="name" value="{{ old('name') }}"
                     class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="HP laptops" required>
+                    placeholder="HP laptops">
                 @error('name')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Description</label>
+                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Description
+                    &#40;optional&#41;</label>
                 <textarea id="description" name="description"
-                    class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                    class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                 @enderror
@@ -28,18 +29,16 @@
             <div class="flex space-x-5 justify-between">
                 <div class="mb-6 w-full">
                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price of Product*</label>
-                    <input type="number" id="price" name="price"
-                        class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        required>
+                    <input type="number" id="price" name="price" value="{{ old('price') }}"
+                        class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @error('price')
                         <div class="text-sm text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-6 w-full">
                     <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900">Quantity*</label>
-                    <input type="number" id="quantity" name="quantity"
-                        class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        required>
+                    <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}"
+                        class="outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @error('quantity')
                         <div class="text-sm text-red-600">{{ $message }}</div>
                     @enderror
